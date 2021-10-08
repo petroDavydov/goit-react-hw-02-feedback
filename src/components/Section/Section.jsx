@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
 import s from './Section.module.css';
 
-function Section(props) {
-  const { title = '', children } = props;
+export default function Section({ title, children }) {
   return (
-    <section className={s.section}>
-      {title && (
-        <h2 className={s.titleSection}>
-          {title}
-          {children}
-        </h2>
-      )}
-    </section>
+    <div className={s.wraperSection}>
+      <h2 className={s.titleSection}>{title}</h2>
+      {children}
+    </div>
   );
 }
 
-Section.propTypes = {
-  title: PropTypes.string.isRequired,
+Section.default = {
+  title: 'Please Leave FeedBack',
 };
 
-export default Section;
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
